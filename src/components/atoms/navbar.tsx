@@ -6,20 +6,19 @@ function Navbar() {
 
     return(
     <div>
-        <header>
-        <nav className="star-navbar">
-            <a href="">
-                <img src={logo} alt="logo" className="logo"/>
-            </a>
-            <ul>
-            <li className="kategori">
-                <a href="link" className="Ktg" >Kategori</a>
-                <img src={avatar} alt="avatar"/>
-            </li>
-           </ul>
-           
-        </nav>
-     </header>
+        <header className='bg-white'>
+            <nav className="pb-20 ...">
+                <div className="flex items-center justify-between" >
+                    <a href="#">
+                    <img src={logo} alt="logo" />
+                </a>
+                <p>Kategori</p>
+                </div>
+                <div>
+                    <img src={avatar} alt="Profil" />
+                </div>
+            </nav>
+        </header>
     </div>
     );
 }
