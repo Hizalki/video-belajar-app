@@ -1,57 +1,20 @@
 import { Google, Visibility, VisibilityOff } from "@mui/icons-material";
-import { useForm } from "react-hook-form";
-import { z } from "zod";
-import { zodResolver } from '@hookform/resolvers/zod';
-import { useState } from "react";
+import { useHookRegis } from "../../hook/useHookRegis";
 
-// Schema validation yang sesuai dengan form registrasi
-const registrationFormSchema = z.object({
-  fullName: z.string().min(2, "Nama lengkap minimal 2 karakter"),
-  email: z.string().email("Format email tidak valid"),
-  phoneNumber: z.string().min(10, "Nomor HP minimal 10 digit").max(15, "Nomor HP maksimal 15 digit"),
-  password: z.string().min(8, "Password minimal 8 karakter"),
-  confirmPassword: z.string().min(8, "Konfirmasi password minimal 8 karakter"),
-}).refine((data) => data.password === data.confirmPassword, {
-  message: "Password dan konfirmasi password tidak cocok",
-  path: ["confirmPassword"],
-});
-
-type RegistrationFormData = z.infer<typeof registrationFormSchema>;
 
 function FormRegis() {
-  const [showPassword, setShowPassword] = useState(false);
-  const [showConfirmPassword, setShowConfirmPassword] = useState(false);
+  const {
+    handleForgotPassword,
+    handleGoogleRegistration,
+    handleNavigateToLogin,
+    handleRegistration,
+    setShowConfirmPassword,
+    setShowPassword,
+    showConfirmPassword,
+    showPassword,
+    form
+  } = useHookRegis();
 
-  const form = useForm<RegistrationFormData>({
-    resolver: zodResolver(registrationFormSchema),
-    defaultValues: {
-      fullName: "",
-      email: "",
-      phoneNumber: "",
-      password: "",
-      confirmPassword: "",
-    },
-  });
-
-  const handleRegistration = (values: RegistrationFormData) => {
-    console.log("Data registrasi:", values);
-    alert("Registrasi berhasil!");
-  };
-
-  const handleGoogleRegistration = () => {
-    console.log("Daftar dengan Google");
-    // Implementasi registrasi Google di sini
-  };
-
-  const handleNavigateToLogin = () => {
-    console.log("Navigate to login");
-    // Implementasi navigasi ke halaman login
-  };
-
-  const handleForgotPassword = () => {
-    console.log("Forgot password");
-    // Implementasi forgot password di sini
-  };
 
   return (
     <div className="bg-[#FFFDF3] py-6 px-5 sm:py-30 sm:px-15 flex justify-center items-center sm:h-full">
@@ -106,7 +69,7 @@ function FormRegis() {
               </span>
             )}
             <br />
-
+ 
             {/* Nomor HP */}
             <label htmlFor="phoneNumber" className="text-[#717177] text-[14px] sm:text-base font-sans leading-8 tracking-wide">
               No. Hp *<br />

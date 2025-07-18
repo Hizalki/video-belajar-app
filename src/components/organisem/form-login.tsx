@@ -1,48 +1,17 @@
 import { Google, Visibility, VisibilityOff } from "@mui/icons-material";
-import { useForm } from "react-hook-form";
-import { z } from "zod";
-import { zodResolver } from '@hookform/resolvers/zod';
-import { useState } from "react";
-
-// Schema validation untuk form login
-const loginFormSchema = z.object({
-  email: z.string().email("Format email tidak valid"),
-  password: z.string().min(8, "Password minimal 8 karakter"),
-});
-
-type LoginFormData = z.infer<typeof loginFormSchema>;
+import { useHookFrom } from "../../hook/useHookForm";
 
 function FormLogin() {
-  const [showPassword, setShowPassword] = useState(false);
-
-  const form = useForm<LoginFormData>({
-    resolver: zodResolver(loginFormSchema),
-    defaultValues: {
-      email: "",
-      password: "",
-    },
-  });
-
-  const handleLogin = (values: LoginFormData) => {
-    console.log("Data login:", values);
-    // Implementasi login logic di sini
-    alert("Login berhasil!");
-  };
-
-  const handleGoogleLogin = () => {
-    console.log("Login dengan Google");
-    // Implementasi Google login di sini
-  };
-
-  const handleNavigateToRegister = () => {
-    console.log("Navigate to register");
-    // Implementasi navigasi ke halaman registrasi
-  };
-
-  const handleForgotPassword = () => {
-    console.log("Forgot password");
-    // Implementasi forgot password di sini
-  };
+  const {
+     handleForgotPassword,
+     handleGoogleLogin, 
+     handleLogin, 
+     handleNavigateToRegister, 
+     setShowPassword, 
+     showPassword, 
+     form
+  } = useHookFrom()
+  
 
   return (
     <div className="bg-[#FFFDF3] py-6 px-5 sm:py-30 sm:px-15 flex justify-center items-center h-screen sm:h-full">
@@ -132,6 +101,7 @@ function FormLogin() {
               type="button"
               onClick={handleNavigateToRegister}
               className="flex w-full justify-center items-center rounded-lg bg-[#E2FCD9CC] hover:bg-green-100 py-[7px] px-[22px] sm:py-2.5 sm:px-6 gap-1 text-[16px] font-bold sm:font-bold font-sans text-[#3ECF4C] cursor-pointer transition-colors duration-200"
+              
             >
               Daftar
             </button>

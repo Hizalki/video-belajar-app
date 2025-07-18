@@ -1,11 +1,11 @@
-import Navbar2 from "../components/atoms/navbar2";
+import Navbar1 from "../components/atoms/navbar1";
 import FormLogin from "../components/organisem/form-login";
 
 function Login() {
 
     return(
         <div>
-            <Navbar2/>
+            <Navbar1/>
             <FormLogin/>
 
         </div>

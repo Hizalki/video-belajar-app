@@ -1,10 +1,18 @@
-import Navbar from "../components/atoms/navbar1"
+
+import Collection from "../components/atoms/collection";
+import Newsletter from "../components/atoms/newsletter";
+import Hero from "../components/organisem/hero";
+import HomeLayout from "../Layouts/home-layout";
 
 
 const HomePage = () => {
     return(
-        <div>
-            <Navbar/>
+        <div className="bg-[#FFFDF3]">
+            <HomeLayout>
+                <Hero/>
+                <Collection/>
+                <Newsletter/>
+            </HomeLayout>
         </div>
     );
 };
