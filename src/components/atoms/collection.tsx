@@ -1,8 +1,15 @@
-
-import Card from "./card";
+import { useProductStore } from "../../stores/useProductStore";
+import Cardd from "./card";
+import { useEffect } from "react";
 
 const Collection = () => {
+    const {products, fetchProducts, loading} = useProductStore();
 
+ useEffect(() => {
+    fetchProducts();
+  }, []);
+
+  if (loading) return <p>Loading...</p>;
 
     return(
         <div>
@@ -49,8 +56,22 @@ const Collection = () => {
                         </a>
                     </div>
                      {/* Card Collection grid */}
-                     <div className="grid grid-cols-1  gap-8">
-                        <Card/>
+                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                        {products.map((product) => (
+                            <Cardd
+                            key={product.id}
+                            id={product.id}
+                            photos={product.photos}
+                            title={product.title}
+                            subtitle={product.subtitle}
+                            price={product.price}
+                            mentor={product.mentor}
+                            rolmentor={product.rolmentor}
+                            avatar={product.avatar}
+                            />
+                        ))}
+
+                        
                      </div>
                 
                     

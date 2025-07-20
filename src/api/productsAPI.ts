@@ -11,7 +11,6 @@ export const createProduct = (
         photos: string; 
         title: string; 
         subtitle: string;
-        description: string;
         price: number;
         mentor: string;
         rolmentor: string;
